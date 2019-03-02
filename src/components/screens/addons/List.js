@@ -4,28 +4,32 @@ import {
   Text,
   StyleSheet,
   FlatList,
-  Dimensions
 } from 'react-native';
 
-import ModelItem from './ModelItem';
-
-export default class ModelsList extends Component {
+export default class List extends Component {
   render() {
-    const cars = this.props.cars;
+    const title = this.props.title;
+    const data = this.props.data;
+    const ListItem = this.props.ListItem;
+
+    const itemSelection = this.props.itemSelection;
+
     return (
         <FlatList
           ListHeaderComponent={
-            <View style={styles.headerContainer}>
-              <Text style={styles.header}>Выберите модель</Text>
+            <View style={styles.titleContainer}>
+              <Text style={{fontSize: this.props.titleFontSize}}>{title}</Text>
             </View>
           }
 
           contentContainerStyle={styles.list}
-          data={cars}
-          renderItem={({item}) => {
+          data={data}
+          renderItem={({item, index}) => {
             return (
-              <ModelItem
-                model={item}
+              <ListItem
+                item={item}
+                selected={itemSelection ? itemSelection[index] : null}
+                selectItem={(i) => this.props.selectItem(i)}
                 navigate={(screen, userData) => this.props.navigate(screen, userData)}
               />
             );
@@ -46,11 +50,11 @@ const styles = StyleSheet.create({
     zIndex: 0,
     paddingTop: 10,
   },
-  headerContainer: {
+  titleContainer: {
     alignItems: 'center',
     marginBottom: 10,
   },
-  header: {
-    fontSize: 40
-  }
+  // header: {
+  //   fontSize: 35
+  // }
 });

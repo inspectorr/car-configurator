@@ -12,7 +12,7 @@ import arrayFromOrderedObject from '../../accessory/arrayFromOrderedObject';
 
 export default class ModelItem extends Component {
   render() {
-    const model = this.props.model;
+    const model = this.props.item;
     const images = arrayFromOrderedObject(model.images);
 
     const name = model.name.toUpperCase();

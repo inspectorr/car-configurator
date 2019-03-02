@@ -8,7 +8,9 @@ import {
 
 import Bar from './addons/Bar';
 import ForwardButton from './addons/ForwardButton';
-import ModelsList from './addons/ModelsList';
+import List from './addons/List';
+import ModelItem from './addons/ModelItem';
+
 
 export default class Model extends Component {
   render() {
@@ -16,8 +18,11 @@ export default class Model extends Component {
 
     let content = null;
     if (cars) {
-      content = <ModelsList
-        cars={cars}
+      content = <List
+        title='Выберите модель'
+        titleFontSize={40}
+        ListItem={ModelItem}
+        data={cars}
         navigate={(screen, userData) => this.props.navigate(screen, userData)}
       />;
     } else {
@@ -38,14 +43,6 @@ export default class Model extends Component {
           {content}
         </View>
 
-        <View>
-          {
-            // <ForwardButton
-            //   onPress={() => {this.props.navigate('Equipment')}}
-            //   title='Далее'
-            // />
-          }
-        </View>
       </View>
     );
   }
