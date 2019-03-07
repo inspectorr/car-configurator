@@ -9,7 +9,6 @@ import {
 
 import arrayFromOrderedObject from '../../accessory/arrayFromOrderedObject';
 
-
 export default class ModelItem extends Component {
   render() {
     const model = this.props.item;
@@ -29,7 +28,9 @@ export default class ModelItem extends Component {
 
     return (
       <View style={styles.container}>
-      <TouchableOpacity onPress={() => this.props.navigate('Equipment', model)}>
+      <TouchableOpacity onPress={() => {
+        this.props.navigate('Equipment', 'model', model);
+      }}>
         <View style={styles.itemContainer}>
 
           <View style={styles.briefContainer}>

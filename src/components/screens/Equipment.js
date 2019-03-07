@@ -13,18 +13,24 @@ import List from './addons/List';
 import EquipmentItem from './addons/EquipmentItem';
 
 export default class Equipment extends Component {
-
   constructor(props) {
     super(props);
+
+    this.model = this.props.dataSelection.model;
+    this.equipments = arrayFromOrderedObject(this.model.equipment);
+
     this.state = {};
     this.state.forwardEnabled = false;
-    this.equipments = arrayFromOrderedObject(this.props.userData.equipment);
     this.state.itemSelection = this.equipments.map((item) => false);
+    this.state.selectedIndex = null;
   }
 
   selectItem(index) {
     this.setState(prev => (
-      {itemSelection: prev.itemSelection.map((item, i) => i === index)}
+      {
+        itemSelection: prev.itemSelection.map((item, i) => i === index),
+        selectedIndex: index,
+      }
     ));
     this.enableForward();
   }
@@ -40,7 +46,7 @@ export default class Equipment extends Component {
         <View><Bar
           title='Комплектация'
           back={true}
-          onBack={() => {this.props.navigate('Model')}}
+          onBack={(screen) => {this.props.navigate('Model')}}
         /></View>
 
         <View style={{flex: 1}}>
@@ -51,13 +57,15 @@ export default class Equipment extends Component {
             data={equipments}
             selectItem={(index) => this.selectItem(index)}
             itemSelection={this.state.itemSelection}
-            navigate={(screen, userData) => this.props.navigate(screen, userData)}
+            navigate={(screen, key, select) => this.props.navigate(screen, key, select)}
           />
         </View>
 
         <View>
           <ForwardButton
-              onPress={() => {this.props.navigate('Model')}}
+              onPress={() => {
+                this.props.navigate('Color', 'equipment', equipments[this.state.selectedIndex]);
+              }}
               title='Далее'
               enabled={this.state.forwardEnabled}
           />

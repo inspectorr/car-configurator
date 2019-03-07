@@ -11,7 +11,6 @@ export default class List extends Component {
     const title = this.props.title;
     const data = this.props.data;
     const ListItem = this.props.ListItem;
-
     const itemSelection = this.props.itemSelection;
 
     return (
@@ -30,7 +29,7 @@ export default class List extends Component {
                 item={item}
                 selected={itemSelection ? itemSelection[index] : null}
                 selectItem={(i) => this.props.selectItem(i)}
-                navigate={(screen, userData) => this.props.navigate(screen, userData)}
+                navigate={(screen, key, select) => this.props.navigate(screen, key, select)}
               />
             );
           }}

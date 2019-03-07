@@ -5,16 +5,27 @@ import * as firebase from 'firebase';
 
 import Model from './screens/Model';
 import Equipment from './screens/Equipment';
+import Color from './screens/Color';
 
 import arrayFromOrderedObject from './accessory/arrayFromOrderedObject';
 
 export default class App extends Component {
   state = {
-    Screen: {
-      component: Model,
-      userData: null,
+    screens: {
+      'Model': Model,
+      'Equipment': Equipment,
+      'Color': Color,
     },
+
+    activeScreen: Model,
+
     cars: null,
+
+    dataSelection: {
+      model: null,
+      equipment: null,
+      color: null,
+    }
   }
 
   componentDidMount() {
@@ -27,33 +38,28 @@ export default class App extends Component {
     });
   }
 
-  navigate(screen, userData) {
-    if (screen === 'Model') {
-      this.setState({
-        Screen: {
-          component: Model,
-          userData,
-        }
-      });
+  navigate(screen, key, select) {
+    const activeScreen = this.state.screens[screen];
+    if (key === undefined || select === undefined) {
+      this.setState({ activeScreen });
+      return;
     }
-    if (screen === 'Equipment') {
-      this.setState({
-        Screen: {
-          component: Equipment,
-          userData,
-        }
-      });
-    }
+
+    const dataSelection = Object.assign({}, this.state.dataSelection);
+    dataSelection[key] = select;
+    this.setState({ activeScreen, dataSelection });
+
+    console.log('selection update', dataSelection);
   }
 
   render() {
-    const Screen = this.state.Screen;
+    const Screen = this.state.activeScreen;
     return (
       <View style={{flex: 1}}>
-        <Screen.component
-          navigate={(screen, userData) => this.navigate(screen, userData)}
+        <Screen
           cars={this.state.cars}
-          userData={Screen.userData}
+          dataSelection={this.state.dataSelection}
+          navigate={(screen, key, select) => this.navigate(screen, key, select)}
         />
       </View>
     );

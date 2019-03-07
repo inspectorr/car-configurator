@@ -11,7 +11,6 @@ import ForwardButton from './addons/ForwardButton';
 import List from './addons/List';
 import ModelItem from './addons/ModelItem';
 
-
 export default class Model extends Component {
   render() {
     const cars = this.props.cars;
@@ -23,7 +22,7 @@ export default class Model extends Component {
         titleFontSize={40}
         ListItem={ModelItem}
         data={cars}
-        navigate={(screen, userData) => this.props.navigate(screen, userData)}
+        navigate={(screen, key, select) => this.props.navigate(screen, key, select)}
       />;
     } else {
       content = <View style={{
