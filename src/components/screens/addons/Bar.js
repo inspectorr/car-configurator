@@ -4,6 +4,7 @@ import {
   Text,
   StyleSheet,
   TouchableHighlight,
+  TouchableOpacity,
 } from 'react-native';
 
 
@@ -14,15 +15,14 @@ export default class Bar extends Component {
     let button = null;
     if (this.props.back) {
       button =
-      <TouchableHighlight
+      <TouchableOpacity
           style={styles.button}
           onPress={() => {this.props.onBack()}}
-          underlayColor="white"
       >
         <View>
           <Text style={styles.buttonText}>НАЗАД</Text>
         </View>
-      </TouchableHighlight>;
+      </TouchableOpacity>;
     }
 
     return (
