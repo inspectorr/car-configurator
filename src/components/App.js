@@ -6,6 +6,7 @@ import * as firebase from 'firebase';
 import Model from './screens/Model';
 import Equipment from './screens/Equipment';
 import Color from './screens/Color';
+import Summary from './screens/Summary';
 
 import arrayFromOrderedObject from './accessory/arrayFromOrderedObject';
 
@@ -15,6 +16,7 @@ export default class App extends Component {
       'Model': Model,
       'Equipment': Equipment,
       'Color': Color,
+      'Summary': Summary,
     },
 
     activeScreen: Model,
@@ -35,7 +37,11 @@ export default class App extends Component {
       const cars = arrayFromOrderedObject(snap.val());
       console.log('Data recieved: ', cars);
       this.setState({ cars });
+////////////////////////
+      this.navigate('Color', 'model', this.state.cars[0]);
+///////////////////////
     });
+
   }
 
   navigate(screen, key, select) {
@@ -53,6 +59,7 @@ export default class App extends Component {
   }
 
   render() {
+
     const Screen = this.state.activeScreen;
     return (
       <View style={{flex: 1}}>

@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import App from './components/App';
 import * as firebase from 'firebase';
 
+
+
 var config = {
     apiKey: "AIzaSyBG3zSt7jaTzudTfdZuechsrt0pheoEOx0",
     authDomain: "car-configurator-c1118.firebaseapp.com",
