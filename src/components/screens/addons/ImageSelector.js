@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 import {
-  View,
-  Text,
-  StyleSheet,
   Image,
 } from 'react-native';
 
@@ -27,9 +24,3 @@ export default class ImageSelector extends Component {
     return images;
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});

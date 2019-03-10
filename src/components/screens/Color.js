@@ -1,9 +1,8 @@
-import React, { Component, PureComponent } from 'react';
+import React, { Component } from 'react';
 import {
   View,
   Text,
   StyleSheet,
-  ActivityIndicator,
   TouchableOpacity,
 } from 'react-native';
 
@@ -13,7 +12,7 @@ import ImageSelector from './addons/ImageSelector';
 
 import arrayFromOrderedObject from '../accessory/arrayFromOrderedObject';
 
-export default class Color extends PureComponent {
+export default class Color extends Component {
   state = {
     forwardEnabled: true,
     activeImageIndex: this.props.dataSelection.color ? this.props.dataSelection.color.order : 0,

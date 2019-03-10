@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 
 import arrayFromOrderedObject from '../../accessory/arrayFromOrderedObject';
+import formatPrice from '../../accessory/formatPrice';
 
 export default class ModelItem extends Component {
   render() {
@@ -35,7 +36,7 @@ export default class ModelItem extends Component {
 
           <View style={styles.briefContainer}>
             <Text style={styles.name}>{name}</Text>
-            <Text style={styles.prices}>{`${minPrice}-${maxPrice} ₽`}</Text>
+            <Text style={styles.prices}>{`${formatPrice(minPrice)}-${formatPrice(maxPrice)} ₽`}</Text>
           </View>
 
           <View style={styles.imageContainer}>
@@ -88,11 +89,11 @@ const styles = StyleSheet.create({
     paddingRight: 20,
   },
   name: {
-    fontSize: 18,
+    fontSize: 17,
     fontWeight: 'bold',
   },
   prices: {
-    fontSize: 18,
+    fontSize: 17,
     color: 'rgba(204,204,204,0.85)'
   },
 });

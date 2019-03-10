@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 import {
   View,
-  Text,
-  FlatList,
   ActivityIndicator,
 } from 'react-native';
 
 import Bar from './addons/Bar';
-import ForwardButton from './addons/ForwardButton';
 import List from './addons/List';
 import ModelItem from './addons/ModelItem';
 

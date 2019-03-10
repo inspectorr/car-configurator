@@ -37,11 +37,6 @@ export default class App extends Component {
       const cars = arrayFromOrderedObject(snap.val());
       console.log('Data recieved: ', cars);
       this.setState({ cars });
-////////////////////////
-      this.navigate('Equipment', 'model', this.state.cars[0]);
-      this.navigate('Color', 'equipment', this.state.cars[0].equipment.active);
-      this.navigate('Summary', 'color', this.state.cars[0].images.white);
-///////////////////////
     });
   }
 

@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import {
   View,
-  Text,
-  FlatList,
 } from 'react-native';
 
 import arrayFromOrderedObject from '../accessory/arrayFromOrderedObject';
+
 
 import Bar from './addons/Bar';
 import ForwardButton from './addons/ForwardButton';
@@ -18,7 +17,7 @@ export default class Equipment extends Component {
 
     this.model = this.props.dataSelection.model;
     this.equipments = arrayFromOrderedObject(this.model.equipment);
-    
+
     this.state = {};
     this.state.forwardEnabled = false;
     this.state.selectedIndex = null;

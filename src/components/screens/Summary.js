@@ -3,12 +3,12 @@ import {
   View,
   Text,
   StyleSheet,
-  Animated,
   Image,
   TouchableOpacity,
 } from 'react-native';
 
 import Bar from './addons/Bar';
+import formatPrice from '../accessory/formatPrice';
 
 export default class Summary extends Component {
   componentDidMount() {
@@ -34,7 +34,8 @@ export default class Summary extends Component {
           <Image style={styles.image} source={pic} />
         </View>
 
-        <View style={styles.summary}>
+        <View style={{flex: 1, alignItems: 'center'}}>
+        <View style={styles.summaryContainer}>
           <Text style={styles.summaryText} key={selection.model.name}>
             <Text style={{fontWeight: '500', color: '#262F3D'}}>{`Модель: `}</Text>{`${selection.model.name}`}
           </Text>
@@ -45,10 +46,11 @@ export default class Summary extends Component {
             <Text style={{fontWeight: '500', color: '#262F3D'}}>{`Цвет: `}</Text>{`${selection.color.name}`}
           </Text>
         </View>
+        </View>
 
         <View style={styles.priceContainer}>
           <Text style={styles.priceText}>
-            <Text style={{fontWeight: '500', color: '#262F3D'}}>{`Итого: `}</Text>{`${selection.equipment.price} ₽`}
+            <Text style={{fontWeight: '500', color: '#262F3D'}}>{`Итого: `}</Text>{`${formatPrice(selection.equipment.price)} ₽`}
           </Text>
         </View>
 
@@ -90,6 +92,7 @@ const styles = StyleSheet.create({
   },
 
   summaryContainer: {
+    width: 400,
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
   },

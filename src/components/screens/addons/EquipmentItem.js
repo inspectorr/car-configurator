@@ -3,11 +3,10 @@ import {
   View,
   Text,
   StyleSheet,
-  Image,
   TouchableOpacity,
 } from 'react-native';
 
-import arrayFromOrderedObject from '../../accessory/arrayFromOrderedObject';
+import formatPrice from '../../accessory/formatPrice';
 
 export default class EquipmentItem extends Component {
 
@@ -30,7 +29,7 @@ export default class EquipmentItem extends Component {
 
           <View style={[styles.header, selected && styles.headerSelected]}>
             <Text style={styles.name}>{name}</Text>
-            <Text style={styles.price}>{`${price} ₽`}</Text>
+            <Text style={styles.price}>{`${formatPrice(price)} ₽`}</Text>
           </View>
 
           <View style={styles.briefContainer}>
