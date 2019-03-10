@@ -30,7 +30,7 @@ export default class ModelItem extends Component {
     return (
       <View style={styles.container}>
       <TouchableOpacity
-        delayPressIn={250}
+        delayPressIn={110}
         onPress={() => {
           this.props.navigate('Equipment', 'model', model);
       }}>

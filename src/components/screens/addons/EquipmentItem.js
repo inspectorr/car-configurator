@@ -23,7 +23,7 @@ export default class EquipmentItem extends Component {
     return (
       <View style={styles.container}>
       <TouchableOpacity
-        delayPressIn={250} 
+        delayPressIn={110}
         onPress={() => {
         this.props.selectItem(index);
       }}>
