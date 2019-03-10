@@ -6,25 +6,13 @@ import {
   Image,
   TouchableOpacity,
   PixelRatio,
+  ScrollView,
 } from 'react-native';
 
 import Bar from './addons/Bar';
 import formatPrice from '../accessory/formatPrice';
 
-
-// var g = StyleSheet.create({
-//   label: {
-//     fontSize: FONT_BACK_LABEL
-//   }
-// });
-
-
-
 export default class Summary extends Component {
-  componentDidMount() {
-
-  }
-
   render() {
     const selection = this.props.dataSelection;
     const pic = {uri: selection.color.uri};
@@ -37,6 +25,7 @@ export default class Summary extends Component {
           onBack={(screen) => {this.props.navigate('Color')}}
         /></View>
 
+      <ScrollView contentContainerStyle={styles.contentContainer}>
         <View style={styles.headerContainter}>
           <Text style={styles.header}>Ваш автомобиль</Text>
         </View>
@@ -69,6 +58,7 @@ export default class Summary extends Component {
             <Text style={styles.buttonText}>КУПИТЬ</Text>
           </TouchableOpacity>
         </View>
+         </ScrollView>
       </View>
     );
   }
@@ -87,6 +77,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'flex-start',
+  },
+
+  contentContainer: {
+    flex: 1,
+    minHeight: 500,
   },
 
   headerContainter: {

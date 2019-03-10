@@ -108,7 +108,7 @@ export default class Color extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    minHeight: 500,
+    minHeight: 450,
   },
 
   headerContainter: {
