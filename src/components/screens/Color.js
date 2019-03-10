@@ -4,6 +4,7 @@ import {
   Text,
   StyleSheet,
   TouchableOpacity,
+  ScrollView
 } from 'react-native';
 
 import Bar from './addons/Bar';
@@ -62,7 +63,7 @@ export default class Color extends Component {
         /></View>
 
 
-      <View style={styles.container}>
+        <ScrollView contentContainerStyle={styles.container}>
         <View style={styles.headerContainter}>
           <Text style={styles.header}>Выберите цвет</Text>
         </View>
@@ -80,15 +81,15 @@ export default class Color extends Component {
           <View style={styles.colorPanel}>
             {colors}
           </View>
-          <View style={styles.colorNameContainer}>
-            <Text style={styles.colorName}>
-              {images[this.state.activeImageIndex].name}
-            </Text>
-
-          </View>
-
         </View>
-      </View>
+        <View style={styles.colorNameContainer}>
+          <Text style={styles.colorName}>
+            {images[this.state.activeImageIndex].name}
+          </Text>
+        </View>
+        </ScrollView>
+
+
 
         <View>
           <ForwardButton
@@ -107,6 +108,7 @@ export default class Color extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    minHeight: 500,
   },
 
   headerContainter: {
@@ -130,7 +132,8 @@ const styles = StyleSheet.create({
   },
 
   colorsContainer: {
-    flex: 5,
+    // flex: 1,
+    height: 60,
     justifyContent: 'flex-start',
     alignItems: 'center',
   },
@@ -143,6 +146,7 @@ const styles = StyleSheet.create({
   colorNameContainer: {
     flex: 1,
     justifyContent: 'center',
+    alignItems: 'center',
   },
   colorName: {
     fontSize: 50,
