@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
   },
 
   headerContainter: {
-    height: 80,
+    height: 50,
     justifyContent: 'center',
     alignItems: 'center',
   },

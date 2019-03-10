@@ -5,10 +5,20 @@ import {
   StyleSheet,
   Image,
   TouchableOpacity,
+  PixelRatio,
 } from 'react-native';
 
 import Bar from './addons/Bar';
 import formatPrice from '../accessory/formatPrice';
+
+
+// var g = StyleSheet.create({
+//   label: {
+//     fontSize: FONT_BACK_LABEL
+//   }
+// });
+
+
 
 export default class Summary extends Component {
   componentDidMount() {
@@ -65,6 +75,14 @@ export default class Summary extends Component {
 }
 
 
+let FONT_BACK_LABEL = 24;
+let FONT_SUM_LABEL = 40;
+console.log(PixelRatio.get());
+if (PixelRatio.get() <= 2.5) {
+  FONT_BACK_LABEL = 18;
+  FONT_SUM_LABEL = 24;
+}
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -72,7 +90,7 @@ const styles = StyleSheet.create({
   },
 
   headerContainter: {
-    height: 80,
+    height: 50,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -97,8 +115,8 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
   },
   summaryText: {
-    marginLeft: 30,
-    fontSize: 24,
+    marginLeft: 40,
+    fontSize: FONT_BACK_LABEL,
     color: 'rgba(51,51,51,0.95)',
   },
 
@@ -111,7 +129,7 @@ const styles = StyleSheet.create({
   },
   priceText: {
     // marginLeft: 30,
-    fontSize: 40,
+    fontSize: FONT_SUM_LABEL,
     color: 'rgba(51,51,51,0.95)',
   },
 
