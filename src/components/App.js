@@ -38,10 +38,11 @@ export default class App extends Component {
       console.log('Data recieved: ', cars);
       this.setState({ cars });
 ////////////////////////
-      this.navigate('Color', 'model', this.state.cars[0]);
+      this.navigate('Equipment', 'model', this.state.cars[0]);
+      this.navigate('Color', 'equipment', this.state.cars[0].equipment.active);
+      this.navigate('Summary', 'color', this.state.cars[0].images.white);
 ///////////////////////
     });
-
   }
 
   navigate(screen, key, select) {
@@ -58,14 +59,24 @@ export default class App extends Component {
     console.log('selection update', dataSelection);
   }
 
-  render() {
+  resetSelection() {
+    const dataSelection = Object.assign({}, this.state.dataSelection);
+    for (let key in dataSelection) {
+      dataSelection[key] = null;
+    }
+    this.setState({ dataSelection });
 
+    console.log('selection reset', dataSelection);
+  }
+
+  render() {
     const Screen = this.state.activeScreen;
     return (
       <View style={{flex: 1}}>
         <Screen
           cars={this.state.cars}
           dataSelection={this.state.dataSelection}
+          resetSelection={() => this.resetSelection()}
           navigate={(screen, key, select) => this.navigate(screen, key, select)}
         />
       </View>

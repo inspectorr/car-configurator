@@ -16,7 +16,7 @@ import arrayFromOrderedObject from '../accessory/arrayFromOrderedObject';
 export default class Color extends PureComponent {
   state = {
     forwardEnabled: true,
-    activeImageIndex: 0,
+    activeImageIndex: this.props.dataSelection.color ? this.props.dataSelection.color.order : 0,
     images: arrayFromOrderedObject(this.props.dataSelection.model.images),
     imagesComps: null,
   }
@@ -111,7 +111,7 @@ const styles = StyleSheet.create({
   },
 
   headerContainter: {
-    flex: 1,
+    height: 80,
     justifyContent: 'center',
     alignItems: 'center',
   },

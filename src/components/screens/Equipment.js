@@ -18,20 +18,20 @@ export default class Equipment extends Component {
 
     this.model = this.props.dataSelection.model;
     this.equipments = arrayFromOrderedObject(this.model.equipment);
-
+    
     this.state = {};
     this.state.forwardEnabled = false;
-    this.state.itemSelection = this.equipments.map((item) => false);
     this.state.selectedIndex = null;
   }
 
+  componentWillMount() {
+    if (this.props.dataSelection.equipment) {
+      this.selectItem(this.props.dataSelection.equipment.order);
+    }
+  }
+
   selectItem(index) {
-    this.setState(prev => (
-      {
-        itemSelection: prev.itemSelection.map((item, i) => i === index),
-        selectedIndex: index,
-      }
-    ));
+    this.setState({ selectedIndex: index });
     this.enableForward();
   }
 
@@ -46,7 +46,10 @@ export default class Equipment extends Component {
         <View><Bar
           title='Комплектация'
           back={true}
-          onBack={(screen) => {this.props.navigate('Model')}}
+          onBack={(screen) => {
+            this.props.navigate('Model');
+            this.props.resetSelection();
+          }}
         /></View>
 
         <View style={{flex: 1}}>
@@ -55,8 +58,8 @@ export default class Equipment extends Component {
             titleFontSize={28}
             ListItem={EquipmentItem}
             data={equipments}
+            selectedIndex={this.state.selectedIndex}
             selectItem={(index) => this.selectItem(index)}
-            itemSelection={this.state.itemSelection}
             navigate={(screen, key, select) => this.props.navigate(screen, key, select)}
           />
         </View>

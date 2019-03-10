@@ -11,7 +11,7 @@ export default class List extends Component {
     const title = this.props.title;
     const data = this.props.data;
     const ListItem = this.props.ListItem;
-    const itemSelection = this.props.itemSelection;
+    const selectedIndex = this.props.selectedIndex;
 
     return (
         <FlatList
@@ -27,7 +27,7 @@ export default class List extends Component {
             return (
               <ListItem
                 item={item}
-                selected={itemSelection ? itemSelection[index] : null}
+                selected={selectedIndex === index}
                 selectItem={(i) => this.props.selectItem(i)}
                 navigate={(screen, key, select) => this.props.navigate(screen, key, select)}
               />
@@ -53,7 +53,4 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 10,
   },
-  // header: {
-  //   fontSize: 35
-  // }
 });
